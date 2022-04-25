@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <title>webrtcwork - Resources for those working with WebRTC</title>
+    <style>
+        body {
+          font-family: "Courier New", Courier, monospace;
+        }
+        body {
+          width: 768px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        h1 {
+          margin-bottom: 0;
+        }
+        ul {
+          padding-left: 0;
+        }
+        li {
+          list-style-position: inside;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+    </style>
+    <script>
+      window.onload = function() {
+        document.querySelectorAll('.shuffle').forEach(el => {
+          for (let i = el.children.length; i >= 0; i--) {
+            el.appendChild(el.children[Math.random() * i | 0]);
+          }
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <h1> webrtcwork </h1>
+    Welcome to webrtcwork, a space dedicated to making WebRTC work easier. This page is powered by GitHub and available at
+    <a href="https://github.com/webrtcwork/webrtcwork">https://github.com/webrtcwork/webrtcwork</a>, we would love your contributons!
+    This is a living project so we need your help to make it better.
+
+    <h1> Hiring </h1>
+    <ul>
+    </ul>
+
+    <h1> Contracting </h1>
+    <ul>
+    </ul>
+
+    <h1> Servers </h1>
+    <ul class="shuffle">
+      <li> Janus WebRTC Server <a href="https://github.com/meetecho/janus-gateway"> https://github.com/meetecho/janus-gateway </a> </li>
+      <li> mediasoup <a href="https://github.com/versatica/mediasoup"> https://github.com/versatica/mediasoup </a> </li>
+      <li> Galène <a href="https://github.com/jech/galene"> https://github.com/jech/galene </a> </li>
+      <li> Jitsi <a href="https://github.com/jitsi/jitsi"> https://github.com/jitsi/jitsi </a> </li>
+      <li> LiveKit <a href="https://github.com/livekit/livekit-server"> https://github.com/livekit/livekit-server </a> </li>
+    </ul>
+
+    <h1> Libraries </h1>
+    <ul class="shuffle">
+      <li> Pion WebRTC <a href="https://github.com/pion/webrtc"> https://github.com/pion/webrtc </a> </li>
+      <li> aiortc <a href="https://github.com/aiortc/aiortc"> https://github.com/aiortc/aiortc </a> </li>
+      <li> WebRTC.rs <a href="https://github.com/webrtc-rs/webrtc"> https://github.com/webrtc-rs/webrtc </a> </li>
+      <li> libdatachannel <a href="https://github.com/paullouisageneau/libdatachannel"> https://github.com/paullouisageneau/libdatachannel </a> </li>
+      <li> werift-webrtc <a href="https://github.com/shinyoshiaki/werift-webrtc"> https://github.com/shinyoshiaki/werift-webrtc </a> </li>
+      <li> SIPSorcery <a href="https://github.com/sipsorcery-org/sipsorcery"> https://github.com/sipsorcery-org/sipsorcery </a> </li>
+    </ul>
+
+    <h1> Learning </h1>
+    <ul class="shuffle">
+      <li> WebRTC for the Curious <a href="https://webrtcforthecurious.com/"> https://webrtcforthecurious.com/ </a> </li>
+      <li> webrtcHacks <a href="https://webrtchacks.com/"> https://webrtchacks.com/ </a> </li>
+    </ul>
+
+    <h1> WebRTC Providers </h1>
+    <ul>
+    </ul>
+
+    <h1> Miscellanies </h1>
+    <ul>
+      <li> WebRTC interoperability tests <a href="https://github.com/sipsorcery/webrtc-echoes"> https://github.com/sipsorcery/webrtc-echoes</a> </li>
+    </ul>
+  </body>
+</html>
