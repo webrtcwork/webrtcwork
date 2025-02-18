@@ -1,19 +1,44 @@
 <!doctype html>
-<html lang=en>
+<html lang="en" data-theme="">
   <head>
-    <meta charset=utf-8>
+    <meta charset="utf-8">
     <title>webrtcwork - Resources for those working with WebRTC</title>
     <style>
+        :root {
+          --bg-color: #fff;
+          --text-color: #000;
+          --link-color: blue;
+        }
+        [data-theme="dark"] {
+          --bg-color: #121212;
+          --text-color: #e0e0e0;
+          --link-color: #bb86fc;
+        }
+
+        html {
+          background-color: var(--bg-color);
+          color: var(--text-color);
+          transition: background-color 0.3s, color 0.3s;
+        }
         body {
           font-family: "Courier New", Courier, monospace;
-        }
-        body {
           width: 768px;
-          margin-top: 20px;
-          margin-bottom: 20px;
-          margin-left: auto;
-          margin-right: auto;
+          margin: 20px auto;
+          background-color: inherit;
+          color: inherit;
         }
+        a {
+          color: var(--link-color);
+        }
+        .toggle-btn {
+          position: fixed;
+          top: 10px;
+          right: 10px;
+          border: none;
+          background: none;
+          font-size: 1.5em;
+          cursor: pointer;
+        }        
         h1 {
           margin-bottom: 0;
         }
@@ -28,7 +53,42 @@
         }
     </style>
     <script>
-      window.onload = function() {
+      function getTheme() {
+        const stored = localStorage.getItem('theme');
+        if (stored) return stored === 'dark' ? 'dark' : 'light';
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function applyTheme(theme) {
+        if (theme === undefined) {
+          theme = getTheme();
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (toggleBtn) {
+          if (theme === 'dark') {
+            toggleBtn.textContent = '☀️';
+            toggleBtn.title = 'Set light mode';
+          } else {
+            toggleBtn.textContent = '🌙';
+            toggleBtn.title = 'Set dark mode';
+          }
+        }
+      }
+
+      applyTheme();
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.getElementById('theme-toggle');
+        toggleBtn.addEventListener('click', () => {
+          applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
+        });
+        applyTheme();
+        toggleBtn.style.visibility = 'visible';
+      });
+
+      window.onload = function() {        
         document.querySelectorAll('.shuffle').forEach(el => {
           for (let i = el.children.length; i >= 0; i--) {
             el.appendChild(el.children[Math.random() * i | 0]);
@@ -38,6 +98,7 @@
     </script>
   </head>
   <body>
+    <button id="theme-toggle" class="toggle-btn" aria-label="Toggle light/dark mode"></button>
     <h1> webrtcwork </h1>
     Welcome to webrtcwork, a space dedicated to making WebRTC work easier. This page is powered by GitHub and available at
     <a href="https://github.com/webrtcwork/webrtcwork">https://github.com/webrtcwork/webrtcwork</a>, we would love your contributions!
